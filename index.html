@@ -61,6 +61,7 @@
             line-height: 1.7;
             background: var(--white);
             overflow-x: hidden;
+            word-break: keep-all;
         }
 
         .font-mont {
@@ -477,81 +478,217 @@
             transform: translateY(0);
         }
 
-        /* Services Section */
+        /* Services Section - Premium Design */
         .services {
-            background: var(--gray-50);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid var(--gray-200);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
             position: relative;
             overflow: hidden;
         }
 
-        .service-card::before {
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--blue), transparent);
+        }
+
+        .services-premium-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .service-premium-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 48px 40px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-premium-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--blue), var(--blue-light));
+            height: 5px;
+            background: linear-gradient(90deg, var(--navy), var(--blue), var(--blue-light));
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.4s;
+            transition: transform 0.5s;
         }
 
-        .service-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(26, 58, 92, 0.15);
+        .service-premium-card::after {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            transition: all 0.5s;
         }
 
-        .service-card:hover::before {
+        .service-premium-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 32px 64px rgba(26, 58, 92, 0.12);
+            border-color: var(--blue);
+        }
+
+        .service-premium-card:hover::before {
             transform: scaleX(1);
         }
 
-        .service-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            border-radius: 16px;
+        .service-premium-card:hover::after {
+            transform: scale(1.5);
+        }
+
+        .service-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 64px;
+            font-weight: 800;
+            color: rgba(26, 58, 92, 0.06);
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            line-height: 1;
+        }
+
+        .service-icon-premium {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
-            transition: transform 0.4s;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 12px 32px rgba(26, 58, 92, 0.2);
+            transition: all 0.4s;
         }
 
-        .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
+        .service-premium-card:hover .service-icon-premium {
+            transform: scale(1.08) rotate(3deg);
+            box-shadow: 0 16px 40px rgba(26, 58, 92, 0.25);
         }
 
-        .service-icon i {
-            font-size: 28px;
+        .service-icon-premium i,
+        .service-icon-premium svg {
+            font-size: 32px;
             color: var(--blue-light);
         }
 
-        .service-card h3 {
-            font-size: 22px;
+        .service-title-en {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
             font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 12px;
+            color: var(--blue);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
         }
 
-        .service-card p {
+        .service-premium-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-premium-card .service-desc {
             color: var(--gray-600);
             font-size: 15px;
-            line-height: 1.7;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-keyword {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.08) 0%, rgba(93, 173, 226, 0.05) 100%);
+            color: var(--navy);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(52, 152, 219, 0.15);
+            transition: all 0.3s;
+        }
+
+        .service-keyword:hover {
+            background: var(--blue);
+            color: white;
+            border-color: var(--blue);
+        }
+
+        .service-footer {
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-100);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-xai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+
+        .service-xai-badge i {
+            color: var(--gold);
+        }
+
+        /* Services Responsive */
+        @media (max-width: 1024px) {
+            .services-premium-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-premium-card:last-child {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-premium-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-premium-card:last-child {
+                grid-column: span 1;
+            }
+
+            .service-premium-card {
+                padding: 36px 28px;
+            }
+
+            .service-number {
+                font-size: 48px;
+            }
         }
 
         /* Solutions Section */
@@ -734,6 +871,854 @@
 
         .solution-card.coming:hover {
             opacity: 0.8;
+        }
+
+        /* ===== NEW PREMIUM SOLUTIONS CSS ===== */
+        .solutions-premium-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+
+        /* Flagship Solution - H-Insight */
+        .solution-flagship {
+            grid-column: span 12;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+            border-radius: 24px;
+            padding: 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-flagship::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .flagship-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge-flagship {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--navy-dark);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .solution-flagship h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .flagship-subtitle {
+            color: var(--blue-light);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .flagship-desc {
+            color: rgba(255,255,255,0.75);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .flagship-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 32px;
+            align-items: stretch;
+        }
+
+        .feature-tag {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--white);
+            padding: 0 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 44px;
+            line-height: 1;
+            box-sizing: border-box;
+            white-space: nowrap;
+        }
+
+        .feature-tag:hover {
+            background: rgba(52, 152, 219, 0.3);
+            border-color: var(--blue);
+        }
+
+        .flagship-targets {
+            display: flex;
+            gap: 24px;
+        }
+
+        .target-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+
+        .target-item i {
+            color: var(--gold);
+        }
+
+        .flagship-video {
+            position: relative;
+            z-index: 1;
+        }
+
+        .video-placeholder {
+            background: rgba(0,0,0,0.3);
+            border: 2px dashed rgba(255,255,255,0.3);
+            border-radius: 16px;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .video-placeholder:hover {
+            background: rgba(52, 152, 219, 0.2);
+            border-color: var(--blue);
+        }
+
+        .video-placeholder i {
+            font-size: 64px;
+            color: var(--blue-light);
+            margin-bottom: 16px;
+        }
+
+        .video-placeholder span {
+            color: rgba(255,255,255,0.8);
+            font-weight: 600;
+        }
+
+        /* Premium Solution - H-Care */
+        .solution-premium {
+            grid-column: span 6;
+            background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%);
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s;
+        }
+
+        .solution-premium:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(26, 58, 92, 0.15);
+            border-color: var(--blue);
+        }
+
+        .premium-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .premium-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .premium-icon i {
+            font-size: 28px;
+            color: var(--white);
+        }
+
+        .premium-badges {
+            display: flex;
+            gap: 8px;
+        }
+
+        .badge-new {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .badge-live {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .solution-premium h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .premium-subtitle {
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .premium-desc {
+            color: var(--gray-600);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+        .premium-tiers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .tier-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .tier-card.tier-director {
+            border-color: var(--gold);
+            background: linear-gradient(180deg, rgba(197, 160, 89, 0.05) 0%, var(--white) 100%);
+        }
+
+        .tier-card.tier-staff {
+            border-color: var(--blue);
+            background: linear-gradient(180deg, rgba(52, 152, 219, 0.05) 0%, var(--white) 100%);
+        }
+
+        .tier-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .tier-director .tier-header {
+            color: var(--gold);
+        }
+
+        .tier-staff .tier-header {
+            color: var(--blue);
+        }
+
+        .tier-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tier-features li {
+            font-size: 12px;
+            color: var(--gray-600);
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tier-features li i {
+            font-size: 10px;
+            color: var(--blue);
+        }
+
+        .video-placeholder-sm {
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .video-placeholder-sm:hover {
+            background: var(--navy-light);
+        }
+
+        .video-placeholder-sm i {
+            color: var(--white);
+            font-size: 20px;
+        }
+
+        .video-placeholder-sm span {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Standard Solution Cards */
+        .solution-card-new {
+            grid-column: span 3;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 28px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .solution-card-new:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.12);
+            border-color: var(--blue);
+        }
+
+        .solution-card-new.coming {
+            opacity: 0.7;
+            background: var(--gray-50);
+        }
+
+        .solution-card-new.coming:hover {
+            opacity: 0.9;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s;
+        }
+
+        .solution-card-new:hover .card-icon {
+            transform: rotateY(360deg);
+        }
+
+        .card-icon i {
+            font-size: 24px;
+            color: var(--white);
+        }
+
+        .card-icon.youtube {
+            background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+        }
+
+        .badge-coming {
+            background: var(--gray-200);
+            color: var(--gray-600);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .solution-card-new h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .card-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 13px;
+            color: var(--gray-800);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .card-features li:last-child {
+            border-bottom: none;
+        }
+
+        .card-features li i {
+            color: var(--blue);
+            width: 16px;
+        }
+
+        .card-result {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(93, 173, 226, 0.05) 100%);
+            border-radius: 10px;
+            padding: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .result-label {
+            font-size: 12px;
+            color: var(--gray-600);
+        }
+
+        .result-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        .card-coming-label {
+            text-align: center;
+            color: var(--gray-500);
+            font-size: 13px;
+            padding: 14px;
+            background: var(--gray-100);
+            border-radius: 10px;
+        }
+
+        .card-coming-label i {
+            margin-right: 6px;
+        }
+
+        /* H-Care Core Features */
+        .premium-core-features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(26, 58, 92, 0.05) 0%, rgba(52, 152, 219, 0.05) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(26, 58, 92, 0.1);
+        }
+
+        .core-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .core-feature-item i {
+            width: 36px;
+            height: 36px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .core-feature-item div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .core-feature-item strong {
+            font-size: 14px;
+            color: var(--navy);
+            margin-bottom: 2px;
+        }
+
+        .core-feature-item span {
+            font-size: 11px;
+            color: var(--gray-500);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Card Subtitle */
+        .card-subtitle {
+            font-size: 11px;
+            color: var(--blue);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Coming Soon Section - 2026 */
+        .solution-coming-section {
+            grid-column: span 5;
+            background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-50) 100%);
+            border-radius: 20px;
+            padding: 28px;
+            border: 1px dashed var(--gray-300);
+        }
+
+        .coming-header {
+            margin-bottom: 24px;
+        }
+
+        .coming-label {
+            background: linear-gradient(135deg, var(--gray-600) 0%, var(--gray-800) 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .coming-header p {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        .coming-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .coming-card {
+            display: flex;
+            gap: 16px;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s;
+        }
+
+        .coming-card:hover {
+            border-color: var(--blue);
+            box-shadow: 0 8px 24px rgba(52, 152, 219, 0.1);
+        }
+
+        .coming-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gray-100);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .coming-icon i {
+            font-size: 20px;
+            color: var(--gray-500);
+        }
+
+        .coming-info {
+            flex: 1;
+        }
+
+        .coming-info h5 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .coming-info p {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .coming-date {
+            font-size: 12px;
+            color: var(--gray-500);
+            font-weight: 600;
+        }
+
+        .coming-date i {
+            margin-right: 6px;
+            color: var(--blue);
+        }
+
+        /* Innovation Labs */
+        .innovation-labs {
+            margin-top: 48px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(15, 39, 68, 0.03) 0%, rgba(52, 152, 219, 0.03) 100%);
+            border-radius: 24px;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .labs-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .labs-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--navy);
+            letter-spacing: 1px;
+        }
+
+        .labs-title i {
+            color: var(--blue);
+        }
+
+        .labs-header p {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        .labs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .labs-grid.labs-grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .labs-card {
+            display: flex;
+            gap: 20px;
+            padding: 24px;
+            background: var(--white);
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s;
+        }
+
+        .labs-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .labs-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--gray-100);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .labs-icon i {
+            font-size: 24px;
+            color: var(--navy);
+        }
+
+        .labs-icon.youtube {
+            background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+        }
+
+        .labs-icon.youtube i {
+            color: white;
+        }
+
+        .labs-icon.ktype {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+        }
+
+        .labs-icon.ktype i {
+            color: white;
+        }
+
+        .labs-content {
+            flex: 1;
+        }
+
+        .labs-content h5 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .labs-subtitle {
+            font-size: 11px !important;
+            color: var(--blue) !important;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 6px !important;
+            letter-spacing: 0.3px;
+        }
+
+        .labs-content p {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .labs-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .labs-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 10px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+            color: white;
+        }
+
+        .labs-badge.global {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--navy-dark);
+        }
+
+        /* Solutions Responsive Updates */
+        @media (max-width: 1024px) {
+            .solution-flagship {
+                grid-template-columns: 1fr;
+                padding: 32px;
+            }
+
+            .solution-flagship h3 {
+                font-size: 42px;
+            }
+
+            .solution-premium {
+                grid-column: span 12;
+            }
+
+            .solution-card-new {
+                grid-column: span 6;
+            }
+
+            .solution-coming-section {
+                grid-column: span 6;
+            }
+
+            .labs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .labs-grid.labs-grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .solutions-premium-grid {
+                gap: 16px;
+            }
+
+            .solution-flagship h3 {
+                font-size: 32px;
+            }
+
+            .flagship-targets {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .video-placeholder {
+                height: 200px;
+            }
+
+            .premium-tiers {
+                grid-template-columns: 1fr;
+            }
+
+            .premium-core-features {
+                padding: 16px;
+            }
+
+            .solution-card-new {
+                grid-column: span 12;
+            }
+
+            .solution-coming-section {
+                grid-column: span 12;
+            }
+
+            .innovation-labs {
+                padding: 24px;
+            }
+
+            .labs-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .labs-grid,
+            .labs-grid.labs-grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .labs-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .labs-icon {
+                margin: 0 auto;
+            }
+
+            .labs-badges {
+                justify-content: center;
+            }
         }
 
         /* About Section */
@@ -1180,6 +2165,715 @@
             from { width: 0; }
             to { width: 100%; }
         }
+
+        /* ===== NEW SOLUTIONS STRUCTURE CSS ===== */
+        .engine-platform {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+            border-radius: 32px;
+            padding: 64px;
+            margin-bottom: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .engine-platform::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            right: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .engine-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .engine-title-area {
+            flex: 1;
+        }
+
+        .engine-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--navy-dark);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .engine-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 64px;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .engine-tagline {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .engine-tagline .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--blue-light);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .engine-tagline span {
+            color: var(--blue-light);
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .engine-description {
+            max-width: 560px;
+        }
+
+        .engine-description p {
+            color: rgba(255,255,255,0.8);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .engine-description strong {
+            color: var(--white);
+        }
+
+        .engine-diagram {
+            position: relative;
+            z-index: 1;
+            width: 320px;
+            flex-shrink: 0;
+        }
+
+        .diagram-container {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .diagram-formula {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .formula-item {
+            background: rgba(52, 152, 219, 0.2);
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            padding: 12px 16px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .formula-item .icon {
+            font-size: 20px;
+            color: var(--blue-light);
+            margin-bottom: 4px;
+        }
+
+        .formula-item .label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 500;
+        }
+
+        .formula-operator {
+            color: var(--gold);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .diagram-arrow {
+            color: var(--blue-light);
+            font-size: 24px;
+            margin: 16px 0;
+            text-align: center;
+        }
+
+        .diagram-result {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+            padding: 16px 24px;
+            border-radius: 12px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .diagram-result .label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 4px;
+        }
+
+        .diagram-result .value {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .engine-capabilities {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .capability-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s;
+        }
+
+        .capability-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(52, 152, 219, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .capability-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(52, 152, 219, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .capability-icon i {
+            font-size: 20px;
+            color: var(--blue-light);
+        }
+
+        .capability-card h4 {
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .capability-card p {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .powered-section {
+            margin-bottom: 48px;
+        }
+
+        .powered-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .powered-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--navy) 0%, transparent 100%);
+        }
+
+        .powered-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--navy);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .powered-label i {
+            color: var(--blue);
+        }
+
+        .powered-line-right {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--navy) 100%);
+        }
+
+        .solutions-grid-new {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .solution-card-v2 {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card-v2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--blue) 0%, var(--blue-light) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .solution-card-v2:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(26, 58, 92, 0.15);
+            border-color: var(--blue);
+        }
+
+        .solution-card-v2:hover::before {
+            opacity: 1;
+        }
+
+        .solution-card-v2.coming-soon {
+            opacity: 0.7;
+        }
+
+        .solution-card-v2.coming-soon:hover {
+            opacity: 0.85;
+        }
+
+        .card-header-v2 {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .card-icon-v2 {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon-v2.insurance {
+            background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%);
+        }
+
+        .card-icon-v2.healthcare {
+            background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+        }
+
+        .card-icon-v2.finance {
+            background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+        }
+
+        .card-icon-v2 i {
+            font-size: 24px;
+            color: var(--white);
+        }
+
+        .card-badges-v2 {
+            display: flex;
+            gap: 6px;
+        }
+
+        .card-title-v2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .card-subtitle-v2 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 12px;
+        }
+
+        .card-desc-v2 {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            min-height: 44px;
+        }
+
+        .card-features-v2 {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .feature-item-v2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: var(--gray-50);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .feature-item-v2:hover {
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .feature-item-v2 i {
+            font-size: 14px;
+            color: var(--blue);
+            width: 20px;
+        }
+
+        .feature-item-v2 span {
+            font-size: 13px;
+            color: var(--gray-800);
+            font-weight: 500;
+        }
+
+        .card-target-v2 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .target-label-v2 {
+            font-size: 12px;
+            color: var(--gray-400);
+        }
+
+        .target-value-v2 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .ipa-section {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 48px;
+            border: 1px solid var(--gray-200);
+            margin-bottom: 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .ipa-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .ipa-subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 16px;
+        }
+
+        .ipa-desc {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .ipa-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .ipa-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: var(--gray-50);
+            border-radius: 12px;
+        }
+
+        .ipa-feature i {
+            font-size: 20px;
+            color: var(--navy);
+        }
+
+        .ipa-feature span {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-800);
+        }
+
+        .ipa-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ipa-diagram {
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .ipa-diagram::before {
+            content: '';
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border: 2px dashed rgba(52, 152, 219, 0.3);
+            border-radius: 50%;
+            animation: ipaRotate 20s linear infinite;
+        }
+
+        @keyframes ipaRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .ipa-diagram i {
+            font-size: 48px;
+            color: var(--blue-light);
+            margin-bottom: 12px;
+        }
+
+        .ipa-diagram span {
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .ipa-diagram .stat {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--gold);
+            margin-top: 8px;
+        }
+
+        .labs-section-new {
+            background: linear-gradient(135deg, var(--gray-100) 0%, var(--white) 100%);
+            border-radius: 24px;
+            padding: 48px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .labs-header-new {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+
+        .labs-title-new {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .labs-title-new i {
+            font-size: 24px;
+            color: var(--navy);
+        }
+
+        .labs-title-new span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--navy);
+        }
+
+        .labs-desc-new {
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        .labs-grid-new {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .lab-card-new {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--gray-200);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .lab-card-new:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
+
+        .lab-icon-new {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .lab-icon-new.youtube { background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%); }
+        .lab-icon-new.accounting { background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%); }
+        .lab-icon-new.invest { background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%); }
+        .lab-icon-new.hospital { background: linear-gradient(135deg, #10B981 0%, #34D399 100%); }
+
+        .lab-icon-new i {
+            font-size: 20px;
+            color: var(--white);
+        }
+
+        .lab-card-new h5 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .lab-card-new p {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+
+        .lab-status-new {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .lab-status-new.live {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+        }
+
+        .lab-status-new.coming {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366F1;
+        }
+
+        .lab-status-new.research {
+            background: rgba(245, 158, 11, 0.1);
+            color: #F59E0B;
+        }
+
+        /* New Solutions Responsive */
+        @media (max-width: 1024px) {
+            .engine-header {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .engine-diagram {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .engine-capabilities {
+                grid-template-columns: 1fr;
+            }
+
+            .solutions-grid-new {
+                grid-template-columns: 1fr;
+            }
+
+            .ipa-section {
+                grid-template-columns: 1fr;
+            }
+
+            .ipa-visual {
+                order: -1;
+            }
+
+            .labs-grid-new {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .engine-name {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .engine-platform {
+                padding: 32px 24px;
+            }
+
+            .engine-name {
+                font-size: 36px;
+            }
+
+            .ipa-features {
+                grid-template-columns: 1fr;
+            }
+
+            .labs-grid-new {
+                grid-template-columns: 1fr;
+            }
+
+            .labs-header-new {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1208,6 +2902,7 @@
                 <li><a href="#home">홈</a></li>
                 <li><a href="#services">사업 영역</a></li>
                 <li><a href="#solutions">솔루션</a></li>
+                <li><a href="#engine">H-Engine</a></li>
                 <li><a href="#about">회사 소개</a></li>
                 <li><a href="#contact" class="nav-cta">문의하기</a></li>
             </ul>
@@ -1226,6 +2921,7 @@
         <a href="#home" onclick="toggleMobile()">홈</a>
         <a href="#services" onclick="toggleMobile()">사업 영역</a>
         <a href="#solutions" onclick="toggleMobile()">솔루션</a>
+        <a href="#engine" onclick="toggleMobile()">H-Engine</a>
         <a href="#about" onclick="toggleMobile()">회사 소개</a>
         <a href="#contact" onclick="toggleMobile()">문의하기</a>
     </div>
@@ -1276,45 +2972,91 @@
     <section class="services" id="services">
         <div class="section-container">
             <div class="section-header reveal">
-                <span class="section-label">CORE SERVICES</span>
+                <span class="section-label">CORE COMPETENCIES</span>
                 <h2 class="section-title">사업 영역</h2>
-                <p class="section-desc">기획부터 개발, 컨설팅까지 AI 비즈니스의 전 과정을 함께합니다</p>
+                <p class="section-desc">Connecting Human Insight to Future Tech — 인간 행동의 본질을 기술로 연결합니다</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
-                            <circle cx="12" cy="12" r="4"/>
-                        </svg>
+            
+            <div class="services-premium-grid">
+                
+                <!-- 1. AI Strategic Architecture -->
+                <div class="service-premium-card reveal">
+                    <span class="service-number">01</span>
+                    <div class="service-icon-premium">
+                        <i class="fas fa-drafting-compass"></i>
                     </div>
-                    <h3>AI 솔루션 설계</h3>
-                    <p>비즈니스 요구사항을 분석하여 최적의 AI 아키텍처를 설계합니다. 데이터 구조부터 알고리즘 선정까지 전략적 청사진을 제시합니다.</p>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="4" y="4" width="16" height="16" rx="2"/>
-                            <path d="M9 9h6M9 12h6M9 15h4"/>
-                            <circle cx="17" cy="17" r="3" fill="currentColor"/>
-                        </svg>
+                    <p class="service-title-en">AI Strategic Architecture</p>
+                    <h3>AI 전략적 아키텍처 설계</h3>
+                    <p class="service-desc">
+                        비즈니스 도메인의 본질을 분석하여 지속 가능한 하이엔드 AI 아키텍처를 설계합니다. 
+                        데이터 레이어의 구조화부터 정밀 알고리즘 선정까지, 기업의 미래 성장을 위한 
+                        <strong>전략적 기술 청사진</strong>을 제시합니다.
+                    </p>
+                    <div class="service-keywords">
+                        <span class="service-keyword">#도메인최적화</span>
+                        <span class="service-keyword">#확장가능한설계</span>
+                        <span class="service-keyword">#기술거버넌스</span>
                     </div>
-                    <h3>AI 솔루션 개발</h3>
-                    <p>행동 예측 엔진, 자동화 시스템, 분석 플랫폼 등 실제 비즈니스에 적용 가능한 AI 솔루션을 개발하고 구축합니다.</p>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
+                    <div class="service-footer">
+                        <span class="service-xai-badge">
+                            <i class="fas fa-certificate"></i>
+                            설명 가능한 AI(XAI) 기반 설계
+                        </span>
                     </div>
-                    <h3>기업 컨설팅</h3>
-                    <p>기존 시스템에 AI를 성공적으로 내재화하기 위한 전략 수립부터 실행 로드맵까지 종합 컨설팅을 제공합니다.</p>
                 </div>
+                
+                <!-- 2. Behavioral AI Intelligence -->
+                <div class="service-premium-card reveal">
+                    <span class="service-number">02</span>
+                    <div class="service-icon-premium">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <p class="service-title-en">Behavioral AI Intelligence</p>
+                    <h3>지능형 행동 예측 솔루션 개발</h3>
+                    <p class="service-desc">
+                        브릿지에이치만의 <strong>3-WAY 융합 분석 엔진</strong>을 기반으로 
+                        인간 행동의 '이유(Why)'와 '타이밍(When)'을 예측하는 독보적 솔루션을 구축합니다. 
+                        단순한 자동화를 넘어 <strong>비즈니스 임팩트</strong>를 즉각적으로 창출합니다.
+                    </p>
+                    <div class="service-keywords">
+                        <span class="service-keyword">#3-WAY Fusion</span>
+                        <span class="service-keyword">#행동경제학알고리즘</span>
+                        <span class="service-keyword">#실행가능한통찰</span>
+                    </div>
+                    <div class="service-footer">
+                        <span class="service-xai-badge">
+                            <i class="fas fa-certificate"></i>
+                            투명한 의사결정 지원 시스템
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 3. Enterprise AI Transformation -->
+                <div class="service-premium-card reveal">
+                    <span class="service-number">03</span>
+                    <div class="service-icon-premium">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <p class="service-title-en">Enterprise AI Transformation</p>
+                    <h3>기업 AI 트랜스포메이션 컨설팅</h3>
+                    <p class="service-desc">
+                        <strong>25년의 산업 통찰력</strong>을 바탕으로 실질적인 ROI를 보장하는 
+                        엔터프라이즈 AI 내재화 전략을 수립합니다. 단순 기술 도입을 넘어 
+                        <strong>실질적 성과 창출</strong>을 위한 단계별 실행 로드맵과 변화 관리 컨설팅을 제공합니다.
+                    </p>
+                    <div class="service-keywords">
+                        <span class="service-keyword">#ROI엔지니어링</span>
+                        <span class="service-keyword">#실질적성과창출</span>
+                        <span class="service-keyword">#기술내재화로드맵</span>
+                    </div>
+                    <div class="service-footer">
+                        <span class="service-xai-badge">
+                            <i class="fas fa-certificate"></i>
+                            End-to-End 트랜스포메이션 지원
+                        </span>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
@@ -1322,80 +3064,760 @@
     <!-- Solutions Section -->
     <section class="solutions" id="solutions">
         <div class="section-container">
+
+            <!-- Section Header -->
             <div class="section-header reveal">
                 <span class="section-label">AI SOLUTIONS</span>
-                <h2 class="section-title">솔루션 라인업</h2>
-                <p class="section-desc">행동 예측부터 업무 자동화까지, Bridge H의 AI 솔루션</p>
+                <h2 class="section-title">솔루션 포트폴리오</h2>
+                <p class="section-desc">하나의 검증된 예측 엔진, 산업별 맞춤 솔루션</p>
             </div>
-            <div class="solutions-grid">
-                <!-- Main Solution -->
-                <div class="solution-main reveal">
-                    <span class="badge">FLAGSHIP</span>
-                    <h3>H-Insight</h3>
-                    <p class="desc">
-                        심리 × 시간 × 기질을 융합한 3-WAY 행동 예측 엔진.<br>
-                        보험, 금융, 커머스 등 다양한 산업에서 고객의 다음 행동을 예측하여 선제적 대응을 지원합니다.
+
+            <!-- ===== PART 1: H-INSIGHT ENGINE ===== -->
+            <div class="engine-platform reveal">
+                <div class="engine-header">
+                    <div class="engine-title-area">
+                        <div class="engine-badge">
+                            <i class="fas fa-microchip"></i>
+                            CORE ENGINE
+                        </div>
+                        <h2 class="engine-name">H-Insight</h2>
+                        <div class="engine-tagline">
+                            <div class="pulse-dot"></div>
+                            <span>3-WAY Behavioral Prediction Engine</span>
+                        </div>
+                        <div class="engine-description">
+                            <p>
+                                고객이 <strong>'왜'</strong> 그렇게 행동하는지, <strong>'언제'</strong> 개입해야 효과적인지를
+                                심리 · 시간 · 기질 데이터 융합 분석으로 예측합니다.
+                            </p>
+                            <p>
+                                모든 H-시리즈 솔루션의 핵심 엔진으로서, 산업별 특화 모듈에 
+                                <strong>행동 예측 인텔리전스</strong>를 제공합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="engine-diagram">
+                        <div class="diagram-container">
+                            <div class="diagram-formula">
+                                <div class="formula-item">
+                                    <div class="icon"><i class="fas fa-brain"></i></div>
+                                    <div class="label">심리</div>
+                                </div>
+                                <span class="formula-operator">×</span>
+                                <div class="formula-item">
+                                    <div class="icon"><i class="fas fa-clock"></i></div>
+                                    <div class="label">시간</div>
+                                </div>
+                                <span class="formula-operator">×</span>
+                                <div class="formula-item">
+                                    <div class="icon"><i class="fas fa-dna"></i></div>
+                                    <div class="label">기질</div>
+                                </div>
+                            </div>
+                            <div class="diagram-arrow">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <div class="diagram-result">
+                                <div class="label">OUTPUT</div>
+                                <div class="value">Why + When = Optimal Intervention</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="engine-capabilities">
+                    <div class="capability-card">
+                        <div class="capability-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>선제적 리스크 관리</h4>
+                        <p>과거 통계가 아닌 인지 편향과 기질 에너지 분석으로 리스크 발생 구간을 선제적으로 예측</p>
+                    </div>
+                    <div class="capability-card">
+                        <div class="capability-icon">
+                            <i class="fas fa-crosshairs"></i>
+                        </div>
+                        <h4>최적 개입 타이밍</h4>
+                        <p>의사결정 품질이 저하되는 시점을 포착하여 골든 타임에 맞춤형 넛지 설계</p>
+                    </div>
+                    <div class="capability-card">
+                        <div class="capability-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>설명 가능한 로직</h4>
+                        <p>블랙박스 AI가 아닌 행동경제학 기반의 투명한 의사결정 지원 (XAI)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== PART 2: POWERED BY H-INSIGHT ===== -->
+            <div class="powered-section">
+                <div class="powered-header">
+                    <div class="powered-line"></div>
+                    <div class="powered-label">
+                        <i class="fas fa-plug"></i>
+                        POWERED BY H-INSIGHT
+                    </div>
+                    <div class="powered-line-right"></div>
+                </div>
+
+                <div class="solutions-grid-new">
+                    
+                    <!-- H-Insu: Insurance -->
+                    <div class="solution-card-v2 reveal">
+                        <div class="card-header-v2">
+                            <div class="card-icon-v2 insurance">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="card-badges-v2">
+                                <span class="badge-new">NEW</span>
+                                <span class="badge-live">LIVE</span>
+                            </div>
+                        </div>
+                        <h3 class="card-title-v2">H-Insu</h3>
+                        <p class="card-subtitle-v2">Insurance Decision Intelligence</p>
+                        <p class="card-desc-v2">
+                            고객의 의사결정 패턴(Why)을 분석하여 최적화된 보험 설계와 맞춤형 상담 가이드를 제공합니다.
+                        </p>
+                        <div class="card-features-v2">
+                            <div class="feature-item-v2">
+                                <i class="fas fa-search"></i>
+                                <span>고객 의사결정 패턴(Why) 분석</span>
+                            </div>
+                            <div class="feature-item-v2">
+                                <i class="fas fa-file-signature"></i>
+                                <span>최적화된 보험 설계 가이드</span>
+                            </div>
+                            <div class="feature-item-v2">
+                                <i class="fas fa-user-cog"></i>
+                                <span>FC 고객 맞춤형 상담 가이드</span>
+                            </div>
+                        </div>
+                        <div class="card-target-v2">
+                            <span class="target-label-v2">Target →</span>
+                            <span class="target-value-v2">생명보험 · 손해보험 · GA</span>
+                        </div>
+                    </div>
+
+                    <!-- H-Care: Healthcare -->
+                    <div class="solution-card-v2 reveal">
+                        <div class="card-header-v2">
+                            <div class="card-icon-v2 healthcare">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="card-badges-v2">
+                                <span class="badge-live">LIVE</span>
+                            </div>
+                        </div>
+                        <h3 class="card-title-v2">H-Care</h3>
+                        <p class="card-subtitle-v2">Patient Experience Intelligence</p>
+                        <p class="card-desc-v2">
+                            환자 기질 분석으로 상담 클로징율을 높이고 블랙컨슈머 리스크를 사전 감지합니다.
+                        </p>
+                        <div class="card-features-v2">
+                            <div class="feature-item-v2">
+                                <i class="fas fa-bullseye"></i>
+                                <span>상담 클로징 확률 예측</span>
+                            </div>
+                            <div class="feature-item-v2">
+                                <i class="fas fa-user-cog"></i>
+                                <span>환자 맞춤형 상담 가이드</span>
+                            </div>
+                            <div class="feature-item-v2">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>블랙컨슈머 리스크 스캔</span>
+                            </div>
+                        </div>
+                        <div class="card-target-v2">
+                            <span class="target-label-v2">Target →</span>
+                            <span class="target-value-v2">병원 · 의원 · 메디컬 그룹</span>
+                        </div>
+                    </div>
+
+                    <!-- H-Invest: Finance (Coming Soon) -->
+                    <div class="solution-card-v2 coming-soon reveal">
+                        <div class="card-header-v2">
+                            <div class="card-icon-v2 finance">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="card-badges-v2">
+                                <span class="badge-coming">2026 Q2</span>
+                            </div>
+                        </div>
+                        <h3 class="card-title-v2">H-Invest</h3>
+                        <p class="card-subtitle-v2">Trader Psychology Intelligence</p>
+                        <p class="card-desc-v2">
+                            트레이더의 심리 패턴을 분석하여 의사결정 품질 저하 시점을 예측합니다.
+                        </p>
+                        <div class="card-features-v2">
+                            <div class="feature-item-v2">
+                                <i class="fas fa-brain"></i>
+                                <span>투자 심리 편향 분석</span>
+                            </div>
+                            <div class="feature-item-v2">
+                                <i class="fas fa-clock"></i>
+                                <span>의사결정 최적 타이밍</span>
+                            </div>
+                            <div class="feature-item-v2">
+                                <i class="fas fa-balance-scale"></i>
+                                <span>리스크 성향 프로파일링</span>
+                            </div>
+                        </div>
+                        <div class="card-target-v2">
+                            <span class="target-label-v2">Target →</span>
+                            <span class="target-value-v2">증권사 · 자산운용사 · PB</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ===== PART 3: ENTERPRISE IPA ===== -->
+            <div class="ipa-section reveal">
+                <div class="ipa-content">
+                    <h3>Enterprise IPA</h3>
+                    <p class="ipa-subtitle">Intelligent Process Automation</p>
+                    <p class="ipa-desc">
+                        행동 예측 엔진과 독립적으로 운영되는 지능형 업무 자동화 솔루션입니다.
+                        AI 기반 챗봇, 워크플로우 자동화, 문서 처리 등 기업의 반복 업무를 자동화합니다.
                     </p>
-                    <div class="features">
-                        <span class="feature">리스크 예측</span>
-                        <span class="feature">최적 타이밍 분석</span>
-                        <span class="feature">기질 프로파일링</span>
-                        <span class="feature">맞춤 전략 도출</span>
+                    <div class="ipa-features">
+                        <div class="ipa-feature">
+                            <i class="fas fa-robot"></i>
+                            <span>AI 챗봇 시스템</span>
+                        </div>
+                        <div class="ipa-feature">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>워크플로우 자동화</span>
+                        </div>
+                        <div class="ipa-feature">
+                            <i class="fas fa-file-alt"></i>
+                            <span>OCR 문서 처리</span>
+                        </div>
+                        <div class="ipa-feature">
+                            <i class="fas fa-cogs"></i>
+                            <span>API 연동 통합</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ipa-visual">
+                    <div class="ipa-diagram">
+                        <i class="fas fa-cogs"></i>
+                        <span>예상 ROI</span>
+                        <div class="stat">40%↓</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== PART 4: INNOVATION LABS ===== -->
+            <div class="labs-section-new reveal">
+                <div class="labs-header-new">
+                    <div class="labs-title-new">
+                        <i class="fas fa-flask"></i>
+                        <span>INNOVATION LABS</span>
+                    </div>
+                    <p class="labs-desc-new">AI 기술 실험 및 연구 프로젝트</p>
+                </div>
+                <div class="labs-grid-new">
+                    <div class="lab-card-new">
+                        <div class="lab-icon-new youtube">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <h5>Trend Radar</h5>
+                        <p>AI 기반 유튜브 콘텐츠 주제 자동 검색 시스템</p>
+                        <span class="lab-status-new live">운영중</span>
+                    </div>
+                    <div class="lab-card-new">
+                        <div class="lab-icon-new accounting">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h5>AI 회계</h5>
+                        <p>OCR + AI 기반 영수증 처리 및 재고 관리</p>
+                        <span class="lab-status-new coming">개발예정</span>
+                    </div>
+                    <div class="lab-card-new">
+                        <div class="lab-icon-new invest">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h5>매매 타이밍 포착</h5>
+                        <p>주식 매매 최적 타이밍 분석 시스템</p>
+                        <span class="lab-status-new research">연구중</span>
+                    </div>
+                    <div class="lab-card-new">
+                        <div class="lab-icon-new hospital">
+                            <i class="fas fa-hospital-user"></i>
+                        </div>
+                        <h5>병원 업무 자동화</h5>
+                        <p>의료기관 행정 프로세스 IPA 시스템</p>
+                        <span class="lab-status-new coming">개발예정</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3-WAY Behavioral AI Engine Section -->
+    <style>
+        /* ===== 3-WAY ENGINE SECTION ===== */
+        .h-engine-section {
+            background: var(--navy-dark);
+            padding: 120px 0;
+            color: var(--white);
+            overflow: hidden;
+        }
+        
+        .engine-display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .engine-visual {
+            position: relative;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* 궤도 애니메이션 */
+        .fusion-orbit {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border: 1px dashed rgba(52, 152, 219, 0.3);
+            border-radius: 50%;
+            animation: engineRotate 20s linear infinite;
+        }
+        
+        @keyframes engineRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 엔진 노드 공통 */
+        .engine-node {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: rgba(15, 39, 68, 0.9);
+            border: 2px solid var(--blue);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+        }
+        
+        .engine-node:hover {
+            transform: scale(1.1);
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.4);
+        }
+        
+        .engine-node.active {
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.5);
+            transform: scale(1.05);
+        }
+        
+        /* 클릭 힌트 애니메이션 */
+        .engine-node::after {
+            content: 'Click';
+            position: absolute;
+            bottom: -25px;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .engine-node:hover::after {
+            opacity: 1;
+        }
+        
+        /* 첫 방문 시 힌트 펄스 */
+        .engine-node.hint-pulse {
+            animation: hintPulse 2s ease-in-out 3;
+        }
+        
+        @keyframes hintPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+            50% { box-shadow: 0 0 20px 10px rgba(197, 160, 89, 0.3); }
+        }
+        
+        /* 노드 위치 */
+        .node-psych { top: -20px; left: 50%; transform: translateX(-50%); }
+        .node-temp { bottom: 30px; left: 20px; }
+        .node-elem { bottom: 30px; right: 20px; }
+        
+        /* 연결선 */
+        .connection-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .connection-line {
+            stroke: rgba(52, 152, 219, 0.2);
+            stroke-width: 2;
+            fill: none;
+            transition: all 0.4s;
+        }
+        
+        .connection-line.active {
+            stroke: var(--gold);
+            stroke-width: 3;
+            filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.6));
+        }
+        
+        /* 중앙 코어 */
+        .fusion-core {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--blue) 0%, transparent 70%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            animation: enginePulse 3s infinite;
+            z-index: 5;
+            cursor: pointer;
+        }
+        
+        @keyframes enginePulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .fusion-core-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 14px;
+            color: white;
+        }
+        
+        /* 정보 카드 */
+        .engine-info-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            min-height: 300px;
+        }
+        
+        .info-detail {
+            display: none;
+            opacity: 0;
+        }
+        
+        .info-detail.active {
+            display: block;
+            animation: engineFadeIn 0.5s forwards;
+        }
+        
+        @keyframes engineFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .info-detail h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .info-detail h4 {
+            color: var(--blue-light);
+            margin-bottom: 20px;
+        }
+        
+        .info-detail p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+        
+        .info-detail ul {
+            list-style: none;
+            padding: 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        .info-detail li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .info-detail li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--blue-light);
+        }
+        
+        /* 탭으로 전환 힌트 (모바일) */
+        .tap-hint {
+            display: none;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        
+        .tap-hint i {
+            margin-right: 5px;
+            animation: tapBounce 1.5s infinite;
+        }
+        
+        @keyframes tapBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        /* ===== 반응형: 태블릿 ===== */
+        @media (max-width: 1024px) {
+            .engine-display {
+                gap: 40px;
+            }
+            
+            .engine-visual {
+                height: 400px;
+            }
+            
+            .fusion-orbit {
+                width: 320px;
+                height: 320px;
+            }
+            
+            .engine-node {
+                width: 85px;
+                height: 85px;
+            }
+            
+            .engine-info-card {
+                padding: 30px;
+            }
+        }
+        
+        /* ===== 반응형: 모바일 ===== */
+        @media (max-width: 768px) {
+            .h-engine-section {
+                padding: 80px 0;
+            }
+            
+            .engine-display {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .engine-visual {
+                height: 350px;
+                order: 1;
+            }
+            
+            .engine-info-card {
+                order: 2;
+                min-height: auto;
+                padding: 25px;
+            }
+            
+            .fusion-orbit {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .engine-node {
+                width: 75px;
+                height: 75px;
+                border-radius: 16px;
+            }
+            
+            .engine-node i {
+                font-size: 20px;
+            }
+            
+            .engine-node span {
+                font-size: 10px !important;
+            }
+            
+            .engine-node::after {
+                display: none;
+            }
+            
+            .fusion-core {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .fusion-core-text {
+                font-size: 12px;
+            }
+            
+            .tap-hint {
+                display: block;
+            }
+            
+            /* 모바일 노드 위치 조정 */
+            .node-psych { top: 0; left: 50%; transform: translateX(-50%); }
+            .node-temp { bottom: 20px; left: 30px; }
+            .node-elem { bottom: 20px; right: 30px; }
+        }
+        
+        /* ===== 반응형: 작은 모바일 ===== */
+        @media (max-width: 480px) {
+            .h-engine-section {
+                padding: 60px 0;
+            }
+            
+            .engine-visual {
+                height: 300px;
+            }
+            
+            .fusion-orbit {
+                width: 240px;
+                height: 240px;
+            }
+            
+            .engine-node {
+                width: 65px;
+                height: 65px;
+            }
+            
+            .fusion-core {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .engine-info-card {
+                padding: 20px;
+            }
+            
+            .info-detail h3 {
+                font-size: 18px;
+            }
+            
+            .info-detail p {
+                font-size: 14px;
+            }
+        }
+    </style>
+
+    <section class="h-engine-section" id="engine">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">PROACTIVE TECHNOLOGY</span>
+                <h2 class="section-title" style="color:white">3-WAY Behavioral AI Engine</h2>
+                <p class="section-desc" style="color:rgba(255,255,255,0.6)">
+                    단순 통계를 넘어 인간 행동의 '이유(Why)'와 '타이밍(When)'을 예측합니다
+                </p>
+            </div>
+            
+            <div class="engine-display">
+                <div class="engine-visual reveal">
+                    <!-- 연결선 SVG -->
+                    <svg class="connection-lines" viewBox="0 0 400 400">
+                        <line class="connection-line" id="line-psych" x1="200" y1="80" x2="200" y2="200"/>
+                        <line class="connection-line" id="line-temp" x1="80" y1="320" x2="200" y2="200"/>
+                        <line class="connection-line" id="line-elem" x1="320" y1="320" x2="200" y2="200"/>
+                    </svg>
+                    
+                    <div class="fusion-orbit"></div>
+                    
+                    <div class="engine-node node-psych hint-pulse" data-type="psych" onclick="showEngineDetail('psych')">
+                        <i class="fas fa-brain" style="color:var(--blue-light); font-size:24px"></i>
+                        <span style="font-size:11px; margin-top:8px; color:rgba(255,255,255,0.8)">Psychological</span>
+                    </div>
+                    
+                    <div class="engine-node node-temp" data-type="temp" onclick="showEngineDetail('temp')">
+                        <i class="fas fa-clock" style="color:var(--blue-light); font-size:24px"></i>
+                        <span style="font-size:11px; margin-top:8px; color:rgba(255,255,255,0.8)">Temporal</span>
+                    </div>
+                    
+                    <div class="engine-node node-elem" data-type="elem" onclick="showEngineDetail('elem')">
+                        <i class="fas fa-fire" style="color:var(--blue-light); font-size:24px"></i>
+                        <span style="font-size:11px; margin-top:8px; color:rgba(255,255,255,0.8)">Elemental</span>
+                    </div>
+                    
+                    <div class="fusion-core" onclick="resetEngineDetail()">
+                        <div class="fusion-core-text">H-ENGINE<br>FUSION</div>
+                    </div>
+                    
+                    <!-- 모바일 힌트 -->
+                    <div class="tap-hint">
+                        <i class="fas fa-hand-pointer"></i>
+                        각 노드를 탭하여 상세 정보를 확인하세요
                     </div>
                 </div>
 
-                <!-- Live Solutions -->
-                <div class="solution-card reveal">
-                    <div class="icon">
-                        <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="11" width="18" height="10" rx="2"/>
-                            <circle cx="12" cy="5" r="3"/>
-                            <path d="M12 8v3"/>
-                            <path d="M8 16h.01M16 16h.01"/>
-                        </svg>
+                <div class="engine-info-card reveal">
+                    <div id="default-info" class="info-detail active">
+                        <h3>🔍 설명 가능한 행동 로직 (XAI)</h3>
+                        <p>
+                            Bridge H의 엔진은 과거 데이터 통계에 의존하는 기존 AI와 달리, 
+                            행동경제학적 근거를 바탕으로 고객의 미래 행동을 예측합니다.
+                        </p>
+                        <p style="color: var(--gold); font-weight: 500;">
+                            👆 좌측의 각 레이어를 클릭하여 상세 분석 로직을 확인하세요.
+                        </p>
+                        <ul style="margin-top: 20px;">
+                            <li>Psychological: 왜 이런 결정을 하는가?</li>
+                            <li>Temporal: 언제 접근해야 효과적인가?</li>
+                            <li>Elemental: 어떤 방식이 맞는가?</li>
+                        </ul>
                     </div>
-                    <span class="badge-live">LIVE</span>
-                    <h4>업무 자동화</h4>
-                    <p>반복적인 사내 업무 프로세스를 AI가 자동으로 처리합니다.</p>
-                </div>
+                    
+                    <div id="psych-info" class="info-detail">
+                        <h4>01. Psychological (심리 분석)</h4>
+                        <p style="color: var(--gold);">Cognitive Profiling & Heuristics Mapping</p>
+                        <ul>
+                            <li>개인별 의사결정 편향성 도출</li>
+                            <li>리스크 복원력 및 인지적 휴리스틱 유형 분류</li>
+                            <li>고객의 <strong>'Why(행동의 이면)'</strong> 분석</li>
+                        </ul>
+                        <div style="margin-top: 20px; padding: 15px; background: rgba(52, 152, 219, 0.1); border-radius: 12px; border-left: 3px solid var(--blue-light);">
+                            <small style="color: rgba(255,255,255,0.6);">적용 예시</small>
+                            <p style="font-size: 14px; margin: 8px 0 0 0;">"이 고객은 손실회피 성향이 강해 '놓치면 후회' 프레이밍이 효과적입니다."</p>
+                        </div>
+                    </div>
 
-                <div class="solution-card reveal">
-                    <div class="icon">
-                        <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/>
-                        </svg>
+                    <div id="temp-info" class="info-detail">
+                        <h4>02. Temporal (시간 리듬)</h4>
+                        <p style="color: var(--gold);">Chrono-Intelligence & Timing Prediction</p>
+                        <ul>
+                            <li>에너지 주기에 따른 최적 개입 타이밍 포착</li>
+                            <li>의사결정 품질 저하 위험 구간 예측</li>
+                            <li>고객의 <strong>'When(최적의 시점)'</strong> 분석</li>
+                        </ul>
+                        <div style="margin-top: 20px; padding: 15px; background: rgba(52, 152, 219, 0.1); border-radius: 12px; border-left: 3px solid var(--blue-light);">
+                            <small style="color: rgba(255,255,255,0.6);">적용 예시</small>
+                            <p style="font-size: 14px; margin: 8px 0 0 0;">"이번 주 목요일이 이 고객의 결정력이 가장 높은 시점입니다."</p>
+                        </div>
                     </div>
-                    <span class="badge-live">LIVE</span>
-                    <h4>유튜브 자동화</h4>
-                    <p>기획부터 영상 생성, 업로드까지 채널 운영을 자동화합니다.</p>
-                </div>
 
-                <!-- Coming Soon -->
-                <div class="solution-card coming reveal">
-                    <div class="icon">
-                        <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
+                    <div id="elem-info" class="info-detail">
+                        <h4>03. Elemental (기질 에너지)</h4>
+                        <p style="color: var(--gold);">Constitutional Architecture Mapping</p>
+                        <ul>
+                            <li>선천적 강점 및 약점의 데이터화</li>
+                            <li>환경 변화에 따른 행동 확률 모델링</li>
+                            <li><strong>State-dependent Preference</strong> 분석</li>
+                        </ul>
+                        <div style="margin-top: 20px; padding: 15px; background: rgba(52, 152, 219, 0.1); border-radius: 12px; border-left: 3px solid var(--blue-light);">
+                            <small style="color: rgba(255,255,255,0.6);">적용 예시</small>
+                            <p style="font-size: 14px; margin: 8px 0 0 0;">"분석형 기질 고객은 정밀함과 체계를 강조할 때 신뢰도가 상승합니다."</p>
+                        </div>
                     </div>
-                    <span class="badge-coming">COMING SOON</span>
-                    <h4>문서/영수증 자동화</h4>
-                    <p>OCR + AI를 결합한 지능형 문서 처리 시스템.</p>
-                </div>
-
-                <div class="solution-card coming reveal">
-                    <div class="icon">
-                        <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                        </svg>
-                    </div>
-                    <span class="badge-coming">COMING SOON</span>
-                    <h4>투자 분석 AI</h4>
-                    <p>행동 경제학 기반 투자 예측 엔진.</p>
                 </div>
             </div>
         </div>
@@ -1454,20 +3876,20 @@
                 <p class="section-desc">Bridge H와 함께 비즈니스의 다음을 설계하세요</p>
             </div>
             <div class="contact-wrapper">
-                <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <form class="contact-form reveal" id="contactForm">
                     <div class="form-row">
                         <div class="form-group">
                             <label>성함 / 담당자</label>
-                            <input type="text" name="name" placeholder="홍길동" required>
+                            <input type="text" placeholder="홍길동" required>
                         </div>
                         <div class="form-group">
                             <label>연락처</label>
-                            <input type="email" name="email" placeholder="email@company.com" required>
+                            <input type="email" placeholder="email@company.com" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>문의 유형</label>
-                        <select name="inquiry_type" required>
+                        <select required>
                             <option value="">선택해주세요</option>
                             <option>H-Insight 솔루션 도입 문의</option>
                             <option>업무 자동화 구축 문의</option>
@@ -1477,9 +3899,8 @@
                     </div>
                     <div class="form-group">
                         <label>문의 내용</label>
-                        <textarea name="message" placeholder="프로젝트 개요나 궁금하신 내용을 적어주세요" required></textarea>
+                        <textarea placeholder="프로젝트 개요나 궁금하신 내용을 적어주세요" required></textarea>
                     </div>
-                    <input type="hidden" name="_subject" value="[Bridge H] 새로운 문의가 도착했습니다">
                     <button type="submit" class="btn-submit">문의 전송하기</button>
                 </form>
             </div>
@@ -1495,7 +3916,7 @@
                 </div>
                 <div class="footer-info">
                     <p>브릿지에이치 연구소 | 사업자등록번호: 110-37-62594</p>
-                    <p>경기도 용인시 기흥구 동백죽전대로 444 C602호 | fatemate2026@gmail.com</p>
+                    <p>경기도 용인시 기흥구 동백죽전대로 444 C602호 | <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f2919d9c86939186b290809b9695979adc919ddc9980">[email&#160;protected]</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1510,7 +3931,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Loading Screen
         window.addEventListener('load', () => {
             setTimeout(() => {
@@ -1772,7 +4193,79 @@
             }
         `;
         document.head.appendChild(style);
-    </script>
 
+        // ===== Video Play Function =====
+        function playVideo(type) {
+            // TODO: 실제 동영상 URL로 교체
+            const videoUrls = {
+                'h-insight': 'https://www.youtube.com/embed/YOUR_VIDEO_ID',
+                'h-care': 'https://www.youtube.com/embed/YOUR_VIDEO_ID'
+            };
+            
+            // 모달 또는 새 창으로 동영상 재생
+            alert('동영상 준비 중입니다.\n\n실제 동영상 URL이 추가되면 자동으로 재생됩니다.');
+            
+            // 실제 구현 예시:
+            // window.open(videoUrls[type], '_blank');
+        }
+
+        // ===== 3-WAY Engine Functions =====
+        function showEngineDetail(type) {
+            // 모든 info-detail 숨기기
+            document.querySelectorAll('.info-detail').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // 선택된 info-detail 표시
+            const targetInfo = document.getElementById(type + '-info');
+            if (targetInfo) {
+                targetInfo.classList.add('active');
+            }
+            
+            // 노드 active 상태 업데이트
+            document.querySelectorAll('.engine-node').forEach(node => {
+                node.classList.remove('active');
+                node.classList.remove('hint-pulse');
+            });
+            
+            const activeNode = document.querySelector(`.node-${type}`);
+            if (activeNode) {
+                activeNode.classList.add('active');
+            }
+            
+            // 연결선 활성화
+            document.querySelectorAll('.connection-line').forEach(line => {
+                line.classList.remove('active');
+            });
+            
+            const activeLine = document.getElementById('line-' + type);
+            if (activeLine) {
+                activeLine.classList.add('active');
+            }
+        }
+        
+        // 기본 상태로 리셋
+        function resetEngineDetail() {
+            document.querySelectorAll('.info-detail').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.getElementById('default-info').classList.add('active');
+            
+            document.querySelectorAll('.engine-node').forEach(node => {
+                node.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.connection-line').forEach(line => {
+                line.classList.remove('active');
+            });
+        }
+        
+        // 힌트 펄스 6초 후 제거
+        setTimeout(() => {
+            document.querySelectorAll('.hint-pulse').forEach(el => {
+                el.classList.remove('hint-pulse');
+            });
+        }, 6000);
+    </script>
 </body>
 </html>
