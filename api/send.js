@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     try {
         await resend.emails.send({
             from: 'Bridge H <onboarding@resend.dev>',
-            to: 'fatemate2026@gmail.com',
+            to: 'gangnam.moneytree@gmail.com',
             replyTo: email,
             subject: `[Bridge H 문의] ${name}님의 파트너십 문의`,
             html: `
